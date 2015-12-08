@@ -25,43 +25,52 @@ This automatic page generator is the easiest way to create beautiful pages for a
 <h3>
 <a id="classifiers" class="anchor" href="#classifiers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classifiers</h3>
 
-<pre><code>library(tm) 
-library(rpart.plot)
+<div class="highlight highlight-source-r"><pre>library(<span class="pl-smi">tm</span>) 
+library(<span class="pl-smi">rpart.plot</span>)
 
-df_labels = read.table('labels.csv',sep="|",header=T)
-df_labels$FullText = as.character(df_labels$FullText)
-docs &lt;- Corpus(DataframeSource(as.data.frame(df_labels[,7])))   
-docs &lt;- tm_map(docs, PlainTextDocument)  
-docs &lt;- tm_map(docs, removeWords,c("the","name_res","for")) 
-docs &lt;- tm_map(docs, removeWords,stopwords()) 
-dtm &lt;- DocumentTermMatrix(docs)
-tdm &lt;- TermDocumentMatrix(docs)
-dtm = removeSparseTerms(dtm, 0.98)
-m = as.matrix(dtm)
-df.classification = as.data.frame(m)
-df.classification$Label = df_labels$Label
+<span class="pl-v">df_labels</span> <span class="pl-k">=</span> read.table(<span class="pl-s"><span class="pl-pds">'</span>labels.csv<span class="pl-pds">'</span></span>,<span class="pl-v">sep</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>|<span class="pl-pds">"</span></span>,<span class="pl-v">header</span><span class="pl-k">=</span><span class="pl-c1">T</span>)
+<span class="pl-smi">df_labels</span><span class="pl-k">$</span><span class="pl-v">FullText</span> <span class="pl-k">=</span> as.character(<span class="pl-smi">df_labels</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>)
+<span class="pl-smi">docs</span> <span class="pl-k">&lt;-</span> Corpus(DataframeSource(as.data.frame(<span class="pl-smi">df_labels</span>[,<span class="pl-c1">7</span>])))   
+<span class="pl-smi">docs</span> <span class="pl-k">&lt;-</span> tm_map(<span class="pl-smi">docs</span>, <span class="pl-smi">PlainTextDocument</span>)  
+<span class="pl-smi">docs</span> <span class="pl-k">&lt;-</span> tm_map(<span class="pl-smi">docs</span>, <span class="pl-smi">removeWords</span>,c(<span class="pl-s"><span class="pl-pds">"</span>the<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>name_res<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>for<span class="pl-pds">"</span></span>)) 
+<span class="pl-smi">docs</span> <span class="pl-k">&lt;-</span> tm_map(<span class="pl-smi">docs</span>, <span class="pl-smi">removeWords</span>,stopwords()) 
+<span class="pl-smi">dtm</span> <span class="pl-k">&lt;-</span> DocumentTermMatrix(<span class="pl-smi">docs</span>)
+<span class="pl-smi">tdm</span> <span class="pl-k">&lt;-</span> TermDocumentMatrix(<span class="pl-smi">docs</span>)
+<span class="pl-v">dtm</span> <span class="pl-k">=</span> removeSparseTerms(<span class="pl-smi">dtm</span>, <span class="pl-c1">0.98</span>)
+<span class="pl-v">m</span> <span class="pl-k">=</span> as.matrix(<span class="pl-smi">dtm</span>)
+<span class="pl-v">df.classification</span> <span class="pl-k">=</span> as.data.frame(<span class="pl-smi">m</span>)
+<span class="pl-smi">df.classification</span><span class="pl-k">$</span><span class="pl-v">Label</span> <span class="pl-k">=</span> <span class="pl-smi">df_labels</span><span class="pl-k">$</span><span class="pl-smi">Label</span>
 
-df.classification$Label[df.classification$Label != 'spam'] = 'service'
+<span class="pl-smi">df.classification</span><span class="pl-k">$</span><span class="pl-smi">Label</span>[<span class="pl-smi">df.classification</span><span class="pl-k">$</span><span class="pl-smi">Label</span> <span class="pl-k">!=</span> <span class="pl-s"><span class="pl-pds">'</span>spam<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>service<span class="pl-pds">'</span></span>
 
-inxs = which(df.classification$Label == 'spam')
-fit &lt;- rpart(factor(Label) ~ ., data = df.classification)
-inxs = df_labels$AutoID
+<span class="pl-v">inxs</span> <span class="pl-k">=</span> which(<span class="pl-smi">df.classification</span><span class="pl-k">$</span><span class="pl-smi">Label</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>spam<span class="pl-pds">'</span></span>)
+<span class="pl-smi">fit</span> <span class="pl-k">&lt;-</span> rpart(<span class="pl-k">factor</span>(<span class="pl-smi">Label</span>) <span class="pl-k">~</span> ., <span class="pl-v">data</span> <span class="pl-k">=</span> <span class="pl-smi">df.classification</span>)
+<span class="pl-v">inxs</span> <span class="pl-k">=</span> <span class="pl-smi">df_labels</span><span class="pl-k">$</span><span class="pl-smi">AutoID</span>
 
 
-prp(fit)
+prp(<span class="pl-smi">fit</span>)</pre></div>
 
-### Designer Templates
-We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.
+<p>!<a href="http://i.imgur.com/EobP4p5.png">http://i.imgur.com/EobP4p5.png</a></p>
 
-### Creating pages manually
-If you prefer to not use the automatic generator, push a branch named `gh-pages` to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.
+<h3>
+<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
 
-### Authors and Contributors
-You can @mention a GitHub username to generate a link to their profile. The resulting `&lt;a&gt;` element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (@defunkt), PJ Hyett (@pjhyett), and Tom Preston-Werner (@mojombo) founded GitHub.
+<p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
 
-### Support or Contact
-Having trouble with Pages? Check out our [documentation](https://help.github.com/pages) or [contact support](https://github.com/contact) and we’ll help you sort it out.
-</code></pre>
+<h3>
+<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating pages manually</h3>
+
+<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+
+<h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+
+<h3>
+<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/davekrall015/Wells-Fargo-Analytics-Competition">Wells Fargo Analytics Competition</a> is maintained by <a href="https://github.com/davekrall015">davekrall015</a>.</span>
