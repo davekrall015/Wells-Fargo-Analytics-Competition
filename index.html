@@ -1,25 +1,33 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!doctype html>
+<html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Wells Fargo Analytics Competition by davekrall015</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-    <section class="page-header">
-      <h1 class="project-name">Wells Fargo Analytics Competition</h1>
-      <h2 class="project-tagline"></h2>
-      <a href="https://github.com/davekrall015/Wells-Fargo-Analytics-Competition" class="btn">View on GitHub</a>
-      <a href="https://github.com/davekrall015/Wells-Fargo-Analytics-Competition/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/davekrall015/Wells-Fargo-Analytics-Competition/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
-
-    <section class="main-content">
-      <h3>
+    <div class="wrapper">
+      <header class="without-description">
+        <h1>Wells Fargo Analytics Competition</h1>
+        <p></p>
+        <p class="view"><a href="https://github.com/davekrall015/Wells-Fargo-Analytics-Competition">View the Project on GitHub <small>davekrall015/Wells-Fargo-Analytics-Competition</small></a></p>
+        <ul>
+          <li><a href="https://github.com/davekrall015/Wells-Fargo-Analytics-Competition/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/davekrall015/Wells-Fargo-Analytics-Competition/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/davekrall015/Wells-Fargo-Analytics-Competition">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
 <a id="data-processing" class="anchor" href="#data-processing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Processing</h3>
 
 <p>Data Processing began with a dataset that was a rat's nest of information that was unorganized. In this dataset, there are Twitter submissions that regard respective banks. This dataset is broken down from a list of information into comprehensible groups. Banks are the first to be filtered, followed by the topics of discussion, then to Sentiment Analysis (emotional reactions to banks filtered through topics).</p>
@@ -88,10 +96,12 @@ rm(<span class="pl-smi">bankD.idx</span>)</pre></div>
 <h3>
 <a id="topics" class="anchor" href="#topics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Topics</h3>
 
-<p>Each topic when they stand alone a very elementary, but when all of the topics come together, they can easily be mixed up or mistaken with one another. Once a visual is created in the form of a bar graph, one can easily see the frequency of each topic's appearance.</p>
+<p>Each topic when they stand alone a very elementary, but when all of the topics come together, they can easily be mixed up or mistaken with one another. Once a visual is created in the form of a bar graph, one can easily see the frequency of each topic's appearance. The content within the dataset is not always filled with positive feedback, often times, the information that is being processed is regarding problems people are having in each respective topic.</p>
 
 <h4>
 <a id="online" class="anchor" href="#online" aria-hidden="true"><span class="octicon octicon-link"></span></a>Online</h4>
+
+<p>The topic, "online," includes items in the dataset that are referring to online processes such as online banking or issues with online interfaces.</p>
 
 <div class="highlight highlight-source-r"><pre><span class="pl-c"># find messages with the topic 'online'</span>
 <span class="pl-v">online1.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>online<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))
@@ -100,11 +110,15 @@ rm(<span class="pl-smi">bankD.idx</span>)</pre></div>
 <h4>
 <a id="atm" class="anchor" href="#atm" aria-hidden="true"><span class="octicon octicon-link"></span></a>ATM</h4>
 
+<p>The topic, "ATM," is a straight forward topic that refers to data in the dataset that is involving the ATM machines that each bank services. More often than not, the feedback regarding ATMs are negative, stating problems that a person is having with the machines.</p>
+
 <div class="highlight highlight-source-r"><pre><span class="pl-c"># find messages with the topic 'atm'</span>
 <span class="pl-v">atm.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>atm<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))</pre></div>
 
 <h4>
 <a id="investment" class="anchor" href="#investment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Investment</h4>
+
+<p>This topic refers mostly to investment banking as well as putting money away for future investments via each individual bank.</p>
 
 <div class="highlight highlight-source-r"><pre><span class="pl-c"># find messages with the topic 'investment'</span>
 <span class="pl-v">investment1.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>investor<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))
@@ -113,11 +127,15 @@ rm(<span class="pl-smi">bankD.idx</span>)</pre></div>
 <h4>
 <a id="fraud" class="anchor" href="#fraud" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fraud</h4>
 
+<p>Almost always negative, this topic has to do with fraud. Either the exceptional use of fraud protection that each bank makes available to the consumer or the lack of fraud protection leading to fraudulent activity in someone's account without their knowing.</p>
+
 <div class="highlight highlight-source-r"><pre><span class="pl-c"># find messages with the topic 'fraud'</span>
 <span class="pl-v">fraud.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>fraud<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))</pre></div>
 
 <h4>
 <a id="service" class="anchor" href="#service" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service</h4>
+
+<p>Generally, this topic is referring to the assistance someone received at the bank or over the phone, both positive and negative.</p>
 
 <div class="highlight highlight-source-r"><pre><span class="pl-c"># find messages with the topic 'service'</span>
 <span class="pl-v">service.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>service<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))</pre></div>
@@ -125,26 +143,28 @@ rm(<span class="pl-smi">bankD.idx</span>)</pre></div>
 <h4>
 <a id="fee" class="anchor" href="#fee" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fee</h4>
 
+<p>Bank fees are the way banks stay in business, without these fees, the banks would ultimately close. The fees however are often times subjects for complaints due to the displeasure one feels after paying a fee.</p>
+
 <div class="highlight highlight-source-r"><pre><span class="pl-c"># find messages with the topic 'fee'</span>
 <span class="pl-v">fee.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>fee<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))</pre></div>
 
 <h4>
 <a id="job" class="anchor" href="#job" aria-hidden="true"><span class="octicon octicon-link"></span></a>Job</h4>
 
+<p>This topic refers to the experiences someone had while applying for a job or receiving a job from the respective banks.</p>
+
 <div class="highlight highlight-source-r"><pre><span class="pl-c"># find messages with the topic 'job'</span>
 <span class="pl-v">job1.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>interview<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))
 <span class="pl-v">job2.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>recruiting<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))
 <span class="pl-v">job3.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>recruitment<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))
 <span class="pl-v">job4.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>job<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))</pre></div>
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/davekrall015/Wells-Fargo-Analytics-Competition">Wells Fargo Analytics Competition</a> is maintained by <a href="https://github.com/davekrall015">davekrall015</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/davekrall015">davekrall015</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
   </body>
 </html>
