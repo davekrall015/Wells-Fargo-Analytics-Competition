@@ -86,19 +86,54 @@ rm(<span class="pl-smi">bankD.idx</span>)</pre></div>
 <p>!(<a href="http://i.imgur.com/0709ESD.png">http://i.imgur.com/0709ESD.png</a>)</p>
 
 <h3>
-<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating pages manually</h3>
+<a id="topics" class="anchor" href="#topics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Topics</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<h4>
+<a id="online" class="anchor" href="#online" aria-hidden="true"><span class="octicon octicon-link"></span></a>Online</h4>
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<div class="highlight highlight-source-r"><pre><span class="pl-c"># find messages with the topic 'online'</span>
+<span class="pl-v">online1.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>online<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))
+<span class="pl-v">online2.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))</pre></div>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<h4>
+<a id="atm" class="anchor" href="#atm" aria-hidden="true"><span class="octicon octicon-link"></span></a>ATM</h4>
 
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<div class="highlight highlight-source-r"><pre><span class="pl-c"># find messages with the topic 'atm'</span>
+<span class="pl-v">atm.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>atm<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))</pre></div>
 
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+<h4>
+<a id="investment" class="anchor" href="#investment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Investment</h4>
+
+<div class="highlight highlight-source-r"><pre><span class="pl-c"># find messages with the topic 'investment'</span>
+<span class="pl-v">investment1.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>investor<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))
+<span class="pl-v">investment2.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>investment<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))</pre></div>
+
+<h4>
+<a id="fraud" class="anchor" href="#fraud" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fraud</h4>
+
+<div class="highlight highlight-source-r"><pre><span class="pl-c"># find messages with the topic 'fraud'</span>
+<span class="pl-v">fraud.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>fraud<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))</pre></div>
+
+<h4>
+<a id="service" class="anchor" href="#service" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service</h4>
+
+<div class="highlight highlight-source-r"><pre><span class="pl-c"># find messages with the topic 'service'</span>
+<span class="pl-v">service.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>service<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))</pre></div>
+
+<h4>
+<a id="fee" class="anchor" href="#fee" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fee</h4>
+
+<div class="highlight highlight-source-r"><pre><span class="pl-c"># find messages with the topic 'fee'</span>
+<span class="pl-v">fee.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>fee<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))</pre></div>
+
+<h4>
+<a id="job" class="anchor" href="#job" aria-hidden="true"><span class="octicon octicon-link"></span></a>Job</h4>
+
+<div class="highlight highlight-source-r"><pre><span class="pl-c"># find messages with the topic 'job'</span>
+<span class="pl-v">job1.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>interview<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))
+<span class="pl-v">job2.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>recruiting<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))
+<span class="pl-v">job3.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>recruitment<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))
+<span class="pl-v">job4.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>job<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))</pre></div>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/davekrall015/Wells-Fargo-Analytics-Competition">Wells Fargo Analytics Competition</a> is maintained by <a href="https://github.com/davekrall015">davekrall015</a>.</span>
