@@ -59,7 +59,9 @@
 <p>!<a href="http://i.imgur.com/EobP4p5.png">http://i.imgur.com/EobP4p5.png</a></p>
 
 <h3>
-<a id="filter-of-banks" class="anchor" href="#filter-of-banks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Filter of Banks</h3>
+<a id="filtering-banks" class="anchor" href="#filtering-banks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Filtering Banks</h3>
+
+<p>This code shown below was an attempt to take the mess of information and, based on the bank being mentioned, filter the submissions. Sentiment is an important filter that is taken into consideration and is weighted heavily in determining general satisfaction of the public in regard to each bank. The image shown immediately below the code shown below is a box plot representing the sentiment score of each bank. </p>
 
 <div class="highlight highlight-source-r"><pre><span class="pl-c"># Filter banks</span>
 <span class="pl-v">bankA.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>banka<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))
@@ -80,6 +82,8 @@ rm(<span class="pl-smi">bankA.idx</span>)
 rm(<span class="pl-smi">bankB.idx</span>)
 rm(<span class="pl-smi">bankC.idx</span>)
 rm(<span class="pl-smi">bankD.idx</span>)</pre></div>
+
+<p>!<a href="http://i.imgur.com/0709ESD.png">http://i.imgur.com/0709ESD.png</a></p>
 
 <h3>
 <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating pages manually</h3>
