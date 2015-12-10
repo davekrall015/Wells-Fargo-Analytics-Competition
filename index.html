@@ -61,36 +61,25 @@
 <h3>
 <a id="filter-of-banks" class="anchor" href="#filter-of-banks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Filter of Banks</h3>
 
-<p>'''R</p>
+<div class="highlight highlight-source-r"><pre><span class="pl-c"># Filter banks</span>
+<span class="pl-v">bankA.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>banka<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))
+<span class="pl-v">bankB.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>bankb<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))
+<span class="pl-v">bankC.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>bankc<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))
+<span class="pl-v">bankD.idx</span> <span class="pl-k">=</span> which(sapply(<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">FullText</span>,<span class="pl-k">function</span>(<span class="pl-smi">x</span>) grepl(<span class="pl-s"><span class="pl-pds">"</span>bankd<span class="pl-pds">"</span></span>,<span class="pl-smi">x</span>)))
 
-<h1>
-<a id="filter-banks" class="anchor" href="#filter-banks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Filter banks</h1>
+<span class="pl-c"># Enter new column with bank name</span>
+<span class="pl-c"># initialize with 'No'</span>
+<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-v">BankID</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>No<span class="pl-pds">"</span></span>
+<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">BankID</span>[<span class="pl-smi">bankA.idx</span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>BankA<span class="pl-pds">"</span></span>
+<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">BankID</span>[<span class="pl-smi">bankB.idx</span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>BankB<span class="pl-pds">"</span></span>
+<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">BankID</span>[<span class="pl-smi">bankC.idx</span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>BankC<span class="pl-pds">"</span></span>
+<span class="pl-smi">df</span><span class="pl-k">$</span><span class="pl-smi">BankID</span>[<span class="pl-smi">bankD.idx</span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>BankD<span class="pl-pds">"</span></span>
 
-<p>bankA.idx = which(sapply(df$FullText,function(x) grepl("banka",x)))
-bankB.idx = which(sapply(df$FullText,function(x) grepl("bankb",x)))
-bankC.idx = which(sapply(df$FullText,function(x) grepl("bankc",x)))
-bankD.idx = which(sapply(df$FullText,function(x) grepl("bankd",x)))</p>
-
-<h1>
-<a id="enter-new-column-with-bank-name" class="anchor" href="#enter-new-column-with-bank-name" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enter new column with bank name</h1>
-
-<h1>
-<a id="initialize-with-no" class="anchor" href="#initialize-with-no" aria-hidden="true"><span class="octicon octicon-link"></span></a>initialize with 'No'</h1>
-
-<p>df$BankID = "No"
-df$BankID[bankA.idx] = "BankA"
-df$BankID[bankB.idx] = "BankB"
-df$BankID[bankC.idx] = "BankC"
-df$BankID[bankD.idx] = "BankD"</p>
-
-<h1>
-<a id="remove-the-bank-indexes" class="anchor" href="#remove-the-bank-indexes" aria-hidden="true"><span class="octicon octicon-link"></span></a>remove the bank indexes</h1>
-
-<p>rm(bankA.idx)
-rm(bankB.idx)
-rm(bankC.idx)
-rm(bankD.idx)
-'''</p>
+<span class="pl-c">#remove the bank indexes </span>
+rm(<span class="pl-smi">bankA.idx</span>)
+rm(<span class="pl-smi">bankB.idx</span>)
+rm(<span class="pl-smi">bankC.idx</span>)
+rm(<span class="pl-smi">bankD.idx</span>)</pre></div>
 
 <h3>
 <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating pages manually</h3>
